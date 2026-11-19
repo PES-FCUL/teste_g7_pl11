@@ -11,22 +11,23 @@ public class Garrafa {
     public Garrafa() {}
 
     /** Volta a pôr a tampa (definitivo). */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aberta() || vazia()", to="tapada()")
     public void tapar() {}
 
     /** Inclina a garrafa e começa a verter. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aberta()", to="verter()")
     public void inclinar() {}
 
     /** O último conteúdo sai da garrafa. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aVerter()", to="aberta()")
     public void esvaziar() {}
 
     /** Endireita a garrafa e pára de verter. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aVerter()", to="aberta()")
     public void endireitar() {}
 
     /** Tira a tampa da garrafa. */
     @StateRefinement(from="selada()", to="aberta()")
-    public void abrir() {}
+    public void abrir() {
+    }
 }
