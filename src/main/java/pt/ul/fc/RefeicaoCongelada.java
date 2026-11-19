@@ -19,14 +19,14 @@ public class RefeicaoCongelada {
     public void voltarACongelar() {}
 
     /** Deita a refeição fora. */
-    @StateRefinement(from="descongelada()", to="desperdicada()")
+    @StateRefinement(from="descongelada() || cozinhada()", to="desperdicada()")
     public void deitarFora() {}
 
     /** Termina a cozedura. */
-    @StateRefinement(from="descongelada()", to="desperdicada()")
+    @StateRefinement(from="aCozinhar()", to="cozinhada()")
     public void terminarCozedura() {}
 
     /** Põe a refeição a cozinhar. */
-    @StateRefinement(from="aCozinhar()", to="cozinhada()")
+    @StateRefinement(from="descongelada()", to="aCozinhar()")
     public void iniciarCozedura() {}
 }
