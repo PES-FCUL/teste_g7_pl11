@@ -11,19 +11,19 @@ public class MaquinaLavar {
     public MaquinaLavar() {}
 
     /** Termina a lavagem. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aLavar()", to="terminada()")
     public void terminar() {}
 
     /** Inicia a lavagem. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="vazia()", to="carregada")
     public void iniciar() {}
 
     /** Descarrega a roupa; a máquina fica vazia. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="terminada()||carregada()", to="vazia()")
     public void descarregar() {}
 
     /** Interrompe a lavagem; a roupa fica na máquina. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aLavar()", to="carregada()")
     public void interromper() {}
 
     /** Carrega a roupa. */
